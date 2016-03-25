@@ -16,6 +16,7 @@ RUN apk add --no-cache --virtual .build-deps curl \
     | ./jq-linux32 --raw-output '.assets[] | .browser_download_url | select(test("web"))' \
     | xargs curl -L -o web-dl.war \
  && unzip -d /web.war web-dl.war \
+ && rm -rf /web.war/org /web.war/WEB-INF \
  && apk --no-cache del .build-deps \
  && rm -f jq-linux32 web-dl.war
 
