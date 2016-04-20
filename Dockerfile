@@ -20,6 +20,8 @@ RUN apk add --no-cache --virtual .build-deps curl \
  && apk --no-cache del .build-deps \
  && rm -f jq-linux32 web-dl.war
 
+RUN rm -f /etc/nginx/conf.d/default.conf
+
 # Enable API endpoint customization using environment variable
 ADD run.sh /bin/
 ENTRYPOINT ["/bin/run.sh"]
