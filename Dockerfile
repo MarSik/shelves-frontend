@@ -18,6 +18,7 @@ RUN apk add --no-cache --virtual .build-deps curl \
  && unzip -d /web.war web-dl.war \
  && rm -rf /web.war/org /web.war/WEB-INF \
  && apk --no-cache del .build-deps \
+ && apk add --no-cache sed \
  && rm -f jq-linux32 web-dl.war
 
 RUN rm -f /etc/nginx/conf.d/default.conf
